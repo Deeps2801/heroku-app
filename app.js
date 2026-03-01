@@ -1,6 +1,7 @@
 
 const express = require('express');
 const app = express();
+require("dotenv").config();
 require("./db/conn");
 const Student = require("./models/student");
 app.use(express.json());
