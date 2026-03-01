@@ -30,7 +30,13 @@ app.get("/student", async (req, res) => {
         res.status(400).send(e);
     }
 });
-app.listen(3000, () => console.log("app is running"));
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => console.log("app is running"));
+
+
+// app.listen(3000, () => console.log("app is running"));
 // pKCCiQrOVom4vzJ3
 // ip address : 183.87.165.230 
 // Db Name : deepakamble281_db_user 
