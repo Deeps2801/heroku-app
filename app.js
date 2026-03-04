@@ -38,8 +38,8 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => 
     
-    console.log("app is running")
-console.log("MONGO_URI:", process.env.MONGO_URI);
+    console.log("app is running" , "MONGO_URI:", process.env.MONGO_URI)
+   
 );
 
 
