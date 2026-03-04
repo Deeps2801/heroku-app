@@ -1,10 +1,14 @@
 
-const express = require('express');
-const app = express();
 require("dotenv").config();
+const express = require('express');
 require("./db/conn");
-const Student = require("./models/student");
+const app = express();
+
+
 app.use(express.json());
+
+
+const Student = require("./models/student");
 
 app.get("/" ,   (req, res) => { 
     res.send("Student INformation")
