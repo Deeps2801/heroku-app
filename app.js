@@ -6,7 +6,9 @@ require("./db/conn");
 const Student = require("./models/student");
 app.use(express.json());
 
-
+app.post("/" ,   (req, res) => { 
+    res.send("Student INformation")
+});
 app.post("/student", async (req, res) => {
     try {
         const user = new Student(req.body);
