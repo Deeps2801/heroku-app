@@ -36,7 +36,11 @@ app.get("/student", async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => console.log("app is running"));
+app.listen(PORT, () => 
+    
+    console.log("app is running")
+console.log("MONGO_URI:", process.env.MONGO_URI);
+);
 
 
 // app.listen(3000, () => console.log("app is running"));
