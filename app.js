@@ -1,51 +1,47 @@
-
 require("dotenv").config();
-const express = require('express');
-require("./db/conn");
+const express = require("express");
+const connectDB = require("./db/conn");
+
 const app = express();
-
-
 app.use(express.json());
-
 
 const Student = require("./models/student");
 
-app.get("/" ,   (req, res) => { 
-    res.send("Student INformation")
+app.get("/", (req, res) => {
+  res.send("Student Information");
 });
+
 app.post("/student", async (req, res) => {
-    try {
-        const user = new Student(req.body);
-        const result = await user.save();
-        res.status(201).send(result);
-        console.log(result)
-    } catch (e) {
-        console.log(e);
-        res.status(400).send(e);
-    }
+  try {
+    const user = new Student(req.body);
+    const result = await user.save();
+    res.status(201).send(result);
+  } catch (e) {
+    console.log(e);
+    res.status(400).send(e);
+  }
 });
-
-
-// Get student data 
 
 app.get("/student", async (req, res) => {
-    try {
-        const studentData = await Student.find();
-        res.status(201).send(studentData);
-        console.log(result)
-    } catch (e) {
-        res.status(400).send(e);
-    }
+  try {
+    const studentData = await Student.find();
+    res.status(200).send(studentData);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => 
-    
-    console.log("app is running" , "MONGO_URI:", process.env.MONGO_URI)
-   
-);
+const startServer = async () => {
+  await connectDB();   // ⬅ wait for DB first
 
+  app.listen(PORT, () => {
+    console.log("🚀 App is running on port", PORT);
+  });
+};
+
+startServer();
 
 // app.listen(3000, () => console.log("app is running"));
 // pKCCiQrOVom4vzJ3
